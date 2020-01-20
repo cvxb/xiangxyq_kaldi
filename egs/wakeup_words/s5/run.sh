@@ -19,9 +19,10 @@ trn_set=../corpus/data
 dev_set=../corpus/dev
 tst_set=../corpus/test
 
-nj=200
+nj=20
 stage=1
 gmm_stage=1
+chain_stage=5
 
 . ./cmd.sh
 . ./path.sh
@@ -39,7 +40,7 @@ fi
 
 # chain
 if [ $stage -le 3 ]; then
- ./local/chain/tuning/run_tdnn_1b.sh --nj $nj
+ ./local/chain/tuning/run_tdnn_1b.sh --nj $nj --stage $chain_stage
 fi
 
 # 生成nnet3模型并且拷贝到../mdl目录
